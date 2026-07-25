@@ -1,5 +1,6 @@
 package com.yadisupri.cekimei;
 
+
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -16,7 +17,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private Button btnCekImei;
     private TextView tvHasilImei;
     private Button btnBukaLink;
-    private CardView cardHasil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +39,13 @@ public class MainActivity extends AppCompatActivity {
         btnCekImei = findViewById(R.id.btnCekImei);
         tvHasilImei = findViewById(R.id.tvHasilImei);
         btnBukaLink = findViewById(R.id.btnBukaLink);
-        cardHasil = findViewById(R.id.cardHasil);
 
-        // Cek permission untuk Android 10 ke atas
+        // Cek permission untuk mendapatkan IMEI otomatis
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            checkPermission();
+            // Android 10+ tidak bisa dapat IMEI otomatis
+            Toast.makeText(this, "Masukkan IMEI secara manual", Toast.LENGTH_LONG).show();
         } else {
-            // Untuk Android 9 ke bawah, permission READ_PHONE_STATE diperlukan
+            // Android 9 ke bawah
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE)
                     != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this,
@@ -86,12 +85,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    private void checkPermission() {
-        // Untuk Android 10+, akses IMEI memerlukan permission khusus
-        // Kita hanya akan menampilkan tombol manual input
-        Toast.makeText(this, "Masukkan IMEI secara manual", Toast.LENGTH_LONG).show();
     }
 
     private void getImeiNumber() {
