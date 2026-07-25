@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="12dp"
         app:cardElevation="4dp"
-        android:layout_marginBottom="24dp">
+        android:layout_marginBottom="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,17 +47,38 @@
                 android:maxLength="15"
                 android:background="@android:drawable/editbox_background"
                 android:padding="12dp"
-                android:layout_marginBottom="16dp"/>
+                android:layout_marginBottom="12dp"/>
 
-            <Button
-                android:id="@+id/btnCekImei"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:text="🔍 CEK IMEI"
-                android:backgroundTint="#2196F3"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/btnCekImei"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:text="🔍 CEK"
+                    android:backgroundTint="#2196F3"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="8dp"/>
+
+                <Button
+                    android:id="@+id/btnDetailWeb"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:text="🌐 DETAIL"
+                    android:backgroundTint="#4CAF50"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:visibility="gone"/>
+            </LinearLayout>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -73,46 +94,54 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="20dp">
+            android:orientation="vertical">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="📋 Hasil IMEI"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#333"
-                android:layout_marginBottom="12dp"/>
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:background="#2196F3">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#ddd"
-                android:layout_marginBottom="12dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="📋 Hasil IMEI"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"/>
+
+                <Button
+                    android:id="@+id/btnCloseWeb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:text="✕"
+                    android:backgroundTint="#FF5722"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:visibility="gone"
+                    android:minWidth="40dp"/>
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tvHasilImei"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Belum ada data IMEI"
+                android:text="🔹 Masukkan IMEI 15 digit\n🔹 Klik tombol CEK\n🔹 Klik DETAIL untuk info lengkap"
                 android:textSize="14sp"
                 android:textColor="#666"
-                android:padding="8dp"
+                android:padding="20dp"
                 android:gravity="center"
-                android:visibility="gone"/>
+                android:background="#fafafa"/>
 
-            <Button
-                android:id="@+id/btnBukaLink"
+            <WebView
+                android:id="@+id/webView"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:text="🌐 Lihat Detail di imei.info"
-                android:backgroundTint="#4CAF50"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:visibility="gone"
-                android:layout_marginTop="12dp"/>
-
+                android:background="#FFFFFF"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
